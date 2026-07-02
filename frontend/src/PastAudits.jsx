@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianG
 import { ArrowLeft, Calendar, ChevronRight } from "lucide-react";
 import "./PastAudits.css";
 
-const API_BASE = "http://127.0.0.1:8000";
+import { API_BASE } from "./config";
 
 const BAND_COLORS = {
   Healthy: "#16A34A",

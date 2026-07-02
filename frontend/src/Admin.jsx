@@ -3,7 +3,7 @@ import axios from "axios";
 import { ArrowLeft, Plus, Trash2, Save, X as XIcon, Lock, AlertCircle } from "lucide-react";
 import "./Admin.css";
 
-const API_BASE = "http://127.0.0.1:8000";
+import { API_BASE } from "./config";
 
 function AdminLogin({ onAuthenticated }) {
   const [key, setKey] = useState("");

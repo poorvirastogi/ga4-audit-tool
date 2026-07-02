@@ -396,3 +396,22 @@
     margin-left: 8px;
   }
 }
+
+/* Fix: ensure floating card always renders cleanly above hero, with more clearance */
+.floating-card {
+  position: relative;
+  z-index: 2;
+}
+
+.hero {
+  padding-bottom: 150px;
+}
+
+.floating-card {
+  position: relative;
+  z-index: 2;
+}
+
+.hero {
+  padding-bottom: 150px;
+}
