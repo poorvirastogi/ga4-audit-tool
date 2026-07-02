@@ -1,0 +1,257 @@
+.dash-page {
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+.dash-hero {
+  background: radial-gradient(circle at 80% 20%, #16224f 0%, #0F1B3D 55%), #0F1B3D;
+  padding: 60px 24px 130px;
+  text-align: center;
+  color: white;
+}
+
+.dash-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #7C9BFF;
+}
+
+.dash-hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 14px 0 10px;
+}
+
+.dash-hero-subtitle {
+  color: #B7C0E0;
+  font-size: 15px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.dash-floating-card {
+  max-width: 920px;
+  margin: -84px auto 0;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(15, 27, 61, 0.18);
+  overflow: hidden;
+}
+
+.dash-summary-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+
+.dash-sidebar-panel {
+  background: #FAFBFF;
+  border-right: 1px solid #E5E9F5;
+  padding: 32px 24px;
+}
+
+.dash-gauge-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dash-gauge-wrap {
+  text-align: center;
+}
+
+.dash-band-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.dash-counts-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 26px;
+}
+
+.dash-count-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dash-count-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dash-count-lbl {
+  font-size: 11.5px;
+  color: #6B7280;
+  margin-top: 2px;
+}
+
+.dash-form-panel {
+  padding: 32px 36px;
+}
+
+.dash-panel-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.dash-issues-card {
+  margin-top: 24px;
+  display: block;
+  width: 100%;
+}
+
+.dash-issues-panel {
+  padding: 32px 36px;
+  width: 100%;
+}
+
+.dash-hint-text {
+  font-size: 13px;
+  color: #6B7280;
+  margin-bottom: 18px;
+}
+
+.dash-issue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.dash-issue-row {
+  border: 1px solid #E5E9F5;
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.dash-issue-row:hover {
+  border-color: #C6D2F0;
+}
+
+.dash-issue-row.expanded {
+  border-color: #2954FF;
+  background: #FAFBFF;
+}
+
+.dash-issue-row-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dash-issue-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dash-issue-row-text {
+  flex: 1;
+  font-size: 14px;
+  color: #111827;
+}
+
+.dash-issue-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.dash-chevron {
+  color: #6B7280;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.dash-issue-row-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #E5E9F5;
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.dash-footer-strip {
+  text-align: center;
+  margin-top: 36px;
+}
+
+.dash-btn-primary {
+  padding: 13px 32px;
+  border-radius: 10px;
+  border: none;
+  background: #2954FF;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dash-btn-primary:hover {
+  background: #1E3FCC;
+}
+
+@media (max-width: 720px) {
+  .dash-summary-card {
+    grid-template-columns: 1fr;
+  }
+  .dash-sidebar-panel {
+    border-right: none;
+    border-bottom: 1px solid #E5E9F5;
+  }
+  .dash-floating-card {
+    margin: -60px 16px 0;
+  }
+}
+
+.dash-panel-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dash-panel-header-row .dash-panel-title {
+  margin-bottom: 0;
+}
+
+.dash-btn-download {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #E5E9F5;
+  background: white;
+  color: #2954FF;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dash-btn-download:hover {
+  background: #EAF0FF;
+  border-color: #C6D2F0;
+}
