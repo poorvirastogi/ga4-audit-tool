@@ -6,7 +6,7 @@ from fastapi import FastAPI, Depends, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 from database import Base, engine, get_db
 from models import Question, AuditRecord
@@ -72,6 +72,38 @@ class QuestionIn(BaseModel):
     fix: str
     order_index: int = 0
 
+    @field_validator("id")
+    @classmethod
+    def id_must_be_slug_like(cls, v):
+        v = v.strip()
+        if not v:
+            raise ValueError("id cannot be empty")
+        if not v.replace("_", "").replace("-", "").isalnum():
+            raise ValueError("id must contain only letters, numbers, hyphens, and underscores")
+        return v
+
+    @field_validator("text", "category", "why", "fix")
+    @classmethod
+    def strings_must_not_be_blank(cls, v):
+        v = v.strip()
+        if not v:
+            raise ValueError("field cannot be empty or whitespace")
+        return v
+
+    @field_validator("weight")
+    @classmethod
+    def weight_must_be_reasonable(cls, v):
+        if v < 1 or v > 100:
+            raise ValueError("weight must be between 1 and 100")
+        return v
+
+    @field_validator("order_index")
+    @classmethod
+    def order_index_must_be_non_negative(cls, v):
+        if v < 0:
+            raise ValueError("order_index cannot be negative")
+        return v
+
 
 class QuestionUpdate(BaseModel):
     text: Optional[str] = None
@@ -82,11 +114,40 @@ class QuestionUpdate(BaseModel):
     fix: Optional[str] = None
     order_index: Optional[int] = None
 
+    @field_validator("text", "category", "why", "fix")
+    @classmethod
+    def strings_must_not_be_blank_if_provided(cls, v):
+        if v is not None:
+            v = v.strip()
+            if not v:
+                raise ValueError("field cannot be empty or whitespace")
+        return v
+
+    @field_validator("weight")
+    @classmethod
+    def weight_must_be_reasonable_if_provided(cls, v):
+        if v is not None and (v < 1 or v > 100):
+            raise ValueError("weight must be between 1 and 100")
+        return v
+
+    @field_validator("order_index")
+    @classmethod
+    def order_index_must_be_non_negative_if_provided(cls, v):
+        if v is not None and v < 0:
+            raise ValueError("order_index cannot be negative")
+        return v
+
 
 class AuditSubmission(BaseModel):
     answers: Dict[str, Literal["Yes", "Partial", "No"]]
     label: Optional[str] = None
 
+    @field_validator("answers")
+    @classmethod
+    def answers_must_be_reasonable_size(cls, v):
+        if len(v) > 100:
+            raise ValueError("too many answers submitted")
+        return v
 
 class AuditRecordOut(BaseModel):
     id: int
